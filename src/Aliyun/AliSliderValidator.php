@@ -15,9 +15,9 @@ class AliSliderValidator
 {
     public function validate($sessionId, $token, $sig, $scene, $appkey, $remoteIp)
     {
-        $iClientProfile = DefaultProfile::getProfile(env('ALISLIDERVALIDATORREGIONID'), env('ALISLIDERVALIDATORACCESSKEY'), env('ALISLIDERVALIDATORACCESSSECRET'));
+        $iClientProfile = DefaultProfile::getProfile(config('aliyunSV.region_id'), config('aliyunSV.access_key'), config('aliyunSV.access_secret'));
         $client = new DefaultAcsClient($iClientProfile);
-        DefaultProfile::addEndpoint(env('ALISLIDERVALIDATORENDPOINTNAME'), env('ALISLIDERVALIDATORREGIONID'), env('ALISLIDERVALIDATORPRODUCT'), env('ALISLIDERVALIDATORDOMAIN'));
+        DefaultProfile::addEndpoint(config('aliyunSV.region_id'), config('aliyunSV.region_id'), "afs", "afs.aliyuncs.com");
 
         $request = new Afs\AuthenticateSigRequest();
         $request->setSessionId($sessionId);// 必填参数，从前端获取，不可更改，android和ios只传这个参数即可
@@ -28,6 +28,6 @@ class AliSliderValidator
         $request->setRemoteIp($remoteIp);//必填参数，后端填写
 
         $response = $client->getAcsResponse($request);//返回code 100表示验签通过，900表示验签失败
-        print_r($response);
+        return $response;
     }
 }
