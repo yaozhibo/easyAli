@@ -6,7 +6,7 @@
  * Time: 17:18
  */
 namespace Easyali\Aliyun;
-include_once './aliyun-php-sdk-core/Config.php';
+include_once __DIR__ . '/aliyun-php-sdk-core/Config.php';
 use afs\Request\V20180112 as Afs;
 use DefaultProfile;
 use DefaultAcsClient;
