@@ -1,5 +1,5 @@
 {
-  "name": "easy-ali/aliyun-php-sdk-core",
+  "name": "easyali/aliyun",
   "description": "阿里sdk",
   "type": "library",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-        "EasyAli\\AliyunPhpSdkCore\\": "src/"
+        "Easyali\\Aliyun\\": "src/"
     }
   }
 }
