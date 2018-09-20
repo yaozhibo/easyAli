@@ -1,5 +1,8 @@
 # Open API SDK for php developers
 
+## Install
+- composer require easy-ali/aliyun-php-sdk-core 
+
 ## Requirements
 
 - PHP 5.3+
