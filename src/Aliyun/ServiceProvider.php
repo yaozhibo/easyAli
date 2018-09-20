@@ -18,4 +18,17 @@ class ServiceProvider extends LaravelServiceProvider
             __DIR__ . '/config.php' => config_path('aliyunSV.php'),
         ],'config');
     }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/config.php', 'aliyunSV');
+        $this->app->bind(AliSliderValidator::class, function () {
+            return new AliSliderValidator();
+        });
+    }
+
+    public function configPath()
+    {
+        return __DIR__ .  'config.php';
+    }
 }
