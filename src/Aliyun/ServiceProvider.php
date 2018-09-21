@@ -12,18 +12,25 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class ServiceProvider extends LaravelServiceProvider
 {
-    public function boot()
-    {
-        $this->publishes([
-            __DIR__ . '/config.php' => config_path('aliyun.php')
-        ]);
-    }
-
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/config.php', 'aliyun'
-        );
+        $configPath = __DIR__ . '/config.php';
+        $this->mergeConfigFrom($configPath,"aliyunSliderConfig");
+    }
+
+    public function boot(){
+        $app = $this->app;
+        $configPath = __DIR__ . '/config.php';
+        $this->publishes([$configPath => $this->getConfigPath()],'config');
+
+    }
+
+    public function getConfigPath(){
+        return config_path("aliyunSV.php");
+    }
+    protected function publishConfig($configPath)
+    {
+        $this->publishes([$configPath => config_path('aliyunSV.php')], 'config');
     }
 
 }
