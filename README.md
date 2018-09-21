@@ -13,7 +13,17 @@
 - PHP 5.3+
 
 ## Example 1 滑动验证
+1.需要先创建滑动验证配置文件aliSliderConfig.php
+<pre>
+<?php
+return [
+    'app_key' => 'FFFF0N00000000006C53', 
+    'remote_ip' => '127.0.0.1' 
+];
+</pre>
 
+2.使用
+<pre>
 	use Easyali\Aliyun\AliSliderValidator;
     
     trait SlideValidator
@@ -24,8 +34,8 @@
             $params['token'] = $_POST['token'];
             $params['sig'] = $_POST['sig'];
             $params['scene'] = $_POST['scene'];
-            $appKey = "FFFF0N00000000006C10";//对应申请的appkey
-            $remoteIp = "127.0.0.0";
+            $appKey = config('aliyunSV.app_key');
+            $remoteIp = config('aliyunSV.remote_ip');
             $slideValidator = new AliSliderValidator();
             $res = $slideValidator->validate($params['csessionid'], $params['token'], $params['sig'], $params['scene'], $appKey, $remoteIp);
             if($res->Code != 100) {
@@ -33,7 +43,7 @@
             }
         }
     }
-
+</pre>
 ## Authors && Contributors
 - sdk开发者
 - [Zuhe]()
