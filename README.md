@@ -1,6 +1,7 @@
 # 阿里sdk简单使用
 
 ## Install
+- <code>composer config repo.packagist composer https://packagist.org</code>
 - <code>composer require easy-ali/aliyun-php-sdk-core</code>
 - 在app.php中注册provider，Easyali\Aliyun\ServiceProvider::class
 - 在.env中插入 ALIYUN_SLIDER_AK(aliyun access key) 和 ALIYUN_SLIDER_AS(aliyun access secret)
