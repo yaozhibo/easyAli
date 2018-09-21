@@ -14,9 +14,8 @@
 ## Example 1 滑动验证
 1.需要先创建滑动验证配置文件aliSliderConfig.php
 <pre>
-<?php
 return [
-    'app_key' => 'FFFF0N00000000006C53', 
+    'app_key' => 'FFFF0N111111111111', 
     'remote_ip' => '127.0.0.1' 
 ];
 </pre>
