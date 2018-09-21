@@ -15,9 +15,14 @@ class AliSliderValidator
 {
     public function validate($sessionId, $token, $sig, $scene, $appkey, $remoteIp)
     {
-        $iClientProfile = DefaultProfile::getProfile(config('aliyunSV.region_id'), config('aliyunSV.access_key'), config('aliyunSV.access_secret'));
+        $region_id = config('aliyunSDKConfig.region_id', 'cn-hangzhou');
+        $access_key = config('aliyunSDKConfig.access_key');
+        $access_secret = config('aliyunSDKConfig.access_secret');
+        $product = config('aliyunSDKConfig.sliderProduct', "afs");
+        $domain = config('aliyunSDKConfig.sliderDomain', "afs.aliyuncs.com");
+        $iClientProfile = DefaultProfile::getProfile($region_id, $access_key, $access_secret);
         $client = new DefaultAcsClient($iClientProfile);
-        DefaultProfile::addEndpoint(config('aliyunSV.region_id'), config('aliyunSV.region_id'), "afs", "afs.aliyuncs.com");
+        DefaultProfile::addEndpoint($region_id, $region_id, $product, $domain);
 
         $request = new Afs\AuthenticateSigRequest();
         $request->setSessionId($sessionId);// 必填参数，从前端获取，不可更改，android和ios只传这个参数即可

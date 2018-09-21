@@ -15,7 +15,7 @@ class ServiceProvider extends LaravelServiceProvider
     public function register()
     {
         $configPath = __DIR__ . '/config.php';
-        $this->mergeConfigFrom($configPath,"aliyunSliderConfig");
+        $this->mergeConfigFrom($configPath,"aliyunSDKConfig");
     }
 
     public function boot(){
@@ -26,11 +26,11 @@ class ServiceProvider extends LaravelServiceProvider
     }
 
     public function getConfigPath(){
-        return config_path("aliyunSV.php");
+        return config_path("aliyunSDKConfig.php");
     }
     protected function publishConfig($configPath)
     {
-        $this->publishes([$configPath => config_path('aliyunSV.php')], 'config');
+        $this->publishes([$configPath => config_path('aliyunSDKConfig.php')], 'config');
     }
 
 }
