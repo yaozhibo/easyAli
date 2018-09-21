@@ -8,24 +8,22 @@
 namespace Easyali\Aliyun;
 
 use Illuminate\Foundation\Application as LaravelApplication;
-use Illuminate\Foundation\Application as LaravelServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class ServiceProvider extends LaravelServiceProvider
 {
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/config.php' => config_path('aliyunSV.php'),
-        ],'config');
+            __DIR__ . '/config.php' => config_path('aliyun.php')
+        ]);
     }
 
     public function register()
     {
-        //
+        $this->mergeConfigFrom(
+            __DIR__.'/config.php', 'aliyun'
+        );
     }
 
-    public function configPath()
-    {
-        return __DIR__ .  'config.php';
-    }
 }
