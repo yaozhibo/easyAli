@@ -4,7 +4,6 @@
 - <code>composer require easy-ali/aliyun-php-sdk-core</code>
 - 在app.php中注册provider，Easyali\Aliyun\ServiceProvider::class
 - 在.env中插入 ALIYUN_SLIDER_AK(aliyun access key) 和 ALIYUN_SLIDER_AS(aliyun access secret)
-- 还需要自行配置appKey和remoteIp，你可以选择在aliyunSDKConfig.php插入，或者新建一个配置文件
 
 - <code>php artisan vendor:publish --provider="Easyali\Aliyun\ServiceProvider" --tag="config"</code>
 - 生成aliyunSDKConfig.php
